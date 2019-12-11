@@ -1,8 +1,9 @@
 import React from 'react';
 
 
-function planet(props) {
-    return <h1>Hello, {props.name}</h1>;
+function Planet(props) {
+    const {planetData}=props;
+    return <h3>{planetData.name}</h3>;
 }
 
-export default planet;
+export default Planet;

@@ -1,6 +1,7 @@
 import React from 'react';
 import planetService from '../_services/planet.service'
 import './planet.css';
+import Planet from './planet';
 class PlanetList extends React.Component {
     constructor(props) {
         super(props);
@@ -8,7 +9,7 @@ class PlanetList extends React.Component {
             planetList: [], 
             filteredList:[],
             searchText:"" ,
-            planetData:{}          
+            planetData:null          
         };
         this.handleChange = this.handleChange.bind(this);
     }    
@@ -40,8 +41,12 @@ class PlanetList extends React.Component {
         this.setState({planetData:_palnetData});
     }
     render() { 
-        const {filteredList,searchText}=this.state;       
-        return (        
+        const {filteredList,searchText,planetData}=this.state;       
+        return ( 
+            <React.Fragment>
+            <div className="header">
+<span className="logout">Logout</span>
+            </div>
             <div className="section">
                 <div className="section-page">
                 <div className="row">
@@ -49,18 +54,20 @@ class PlanetList extends React.Component {
                         <div className="search-section">
                         <input type="text" className="form-control" placeholder="Search" name="searchText" value={searchText} onChange={this.handleChange} />
                         {filteredList.map(planet => (                            
-                            <div className="planetData col-sm-9" key={planet.name} onClick={()=>this.getPlanet(planet.name)}>
+                            <div className="planetData " key={planet.name} onClick={()=>this.getPlanet(planet.name)}>
                                 <strong>{planet.name}</strong>
                             </div>                           
                         ))}
                         </div> 
                     </div>
                     <div className="col-8">
-                        {/* <planet planetData></planet> */}
+                        {planetData!=null?<Planet planetData={planetData}></Planet>:""}
                     </div>
                 </div>
                 </div>            
-            </div>                   
+            </div> 
+            </React.Fragment>       
+                              
         );
     }
 }

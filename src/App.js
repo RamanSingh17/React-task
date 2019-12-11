@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter } from "react-router-dom";
-import { Route,  NavLink,  Switch,  Redirect,  Router,  Link} from "react-router-dom";
+import { Route,  Switch,} from "react-router-dom";
 import './App.css';
 import Login from "./loginPage/login";
 import PlanetList from './planets/planetList';
